@@ -145,12 +145,10 @@
               <goal>add-test-source</goal>
             </goals>
             <configuration>
-              <!--
               <sources>
                 <source>${project.basedir}/target/generated-test-sources/java</source>
                 <source>${project.basedir}/target/generated-test-sources/avro</source>
               </sources>
--->
             </configuration>
           </execution>
           <execution>
