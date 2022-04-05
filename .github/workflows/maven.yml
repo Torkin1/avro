@@ -43,4 +43,4 @@ jobs:
         distribution: 'temurin'
         cache: maven
     - name: Build with Maven
-      run: pwd
+      run: mvn -e package
