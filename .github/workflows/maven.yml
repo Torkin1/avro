@@ -43,4 +43,4 @@ jobs:
         distribution: 'temurin'
         cache: maven
     - name: Build with Maven
-      run: mvn -e package
+      run: cd avro && mvn -e package
