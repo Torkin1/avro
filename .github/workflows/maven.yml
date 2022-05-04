@@ -26,6 +26,8 @@ on:
   push:
     branches:
       - master
+    tags:
+      - release-*   # should launch sonarcloud analysis on all releases
   pull_request:
     types: [opened, synchronize, reopened]
 jobs:
