@@ -86,7 +86,6 @@
     <module>grpc</module>
     <module>integration-test</module>
     <module>perf</module>
-    <module>tests</module>
   </modules>
 
   <build>
