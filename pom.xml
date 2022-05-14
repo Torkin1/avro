@@ -62,7 +62,6 @@
 
   <modules>
     <module>lang/java</module>
-    <module>tests</module>
   </modules>
 
   <scm>
