@@ -33,6 +33,13 @@
     
     <dependency>
       <groupId>org.apache.avro</groupId>
+      <artifactId>lang/java</artifactId>
+      <version>${project.version}</version>
+    </dependency>
+    
+    <!--
+    <dependency>
+      <groupId>org.apache.avro</groupId>
       <artifactId>avro</artifactId>
       <version>${project.version}</version>
     </dependency>
@@ -41,13 +48,11 @@
       <artifactId>avro-android</artifactId>
       <version>${project.version}</version>
     </dependency>
-    <!-- 
     <dependency>
       <groupId>org.apache.avro</groupId>
       <artifactId>avro-archetypes</artifactId>
       <version>${project.version}</version>
     </dependency>
-  -->
     <dependency>
       <groupId>org.apache.avro</groupId>
       <artifactId>avro-compiler</artifactId>
@@ -58,13 +63,11 @@
       <artifactId>avro-grpc</artifactId>
       <version>${project.version}</version>
     </dependency>
-    <!-- 
     <dependency>
       <groupId>org.apache.avro</groupId>
       <artifactId>avro-integration-test</artifactId>
       <version>${project.version}</version>
     </dependency>
-  -->
     <dependency>
       <groupId>org.apache.avro</groupId>
       <artifactId>avro-ipc</artifactId>
@@ -115,8 +118,8 @@
       <artifactId>trevni-avro</artifactId>
       <version>${project.version}</version>
     </dependency>
+    -->
   </dependencies>
-
   <build>
     <plugins>
       <plugin>
