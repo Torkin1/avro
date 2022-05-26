@@ -32,15 +32,6 @@
   <name>Tests</name>
 
   <dependencies>
-    
-    <!--
-    <dependency>
-	    <artifactId>avro</artifactId>
-	    <groupId>org.apache.avro</groupId>
-      <version>${project.version}</version>
-    </dependency>
-  -->
-    
     <dependency>
       <groupId>org.apache.avro</groupId>
       <artifactId>avro</artifactId>
