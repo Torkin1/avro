@@ -68,7 +68,12 @@
     <javacc-plugin.version>3.0.3</javacc-plugin.version>
     <javacc.version>7.0.10</javacc.version>
     <!-- sonarcloud-->
-    <sonar.coverage.jacoco.xmlReportPaths>${maven.multiModuleProjectDirectory}/lang/java/tests/target/site/jacoco-aggregate/jacoco.xml</sonar.coverage.jacoco.xmlReportPaths>
+    <sonar.coverage.jacoco.xmlReportPaths>${maven.multiModuleProjectDirectory}/tests/target/site/jacoco-aggregate/jacoco.xml</sonar.coverage.jacoco.xmlReportPaths>
+    <!-- ba-dua -->
+    <ba-dua.version>0.6.0</ba-dua.version>
+    <ba-dua.groupId>br.usp.each.saeg</ba-dua.groupId>
+    <argLine>-javaagent:${maven.multiModuleProjectDirectory}/target/dependency/ba-dua-agent-rt-${ba-dua.version}-all.jar -Doutput.file=${maven.multiModuleProjectDirectory}/target/badua.ser</argLine>
+    
   </properties>
 
   <modules>
@@ -97,6 +102,30 @@
       parameters if the plugins are used by child projects -->
     <pluginManagement>
       <plugins>
+        <!-- ba-dua -->
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-dependency-plugin</artifactId>
+          <version>2.10</version>
+          <executions>
+            <execution>
+              <goals>
+                <goal>copy</goal>
+              </goals>
+              <configuration>
+                <artifactItems>
+                  <artifactItem>
+                    <groupId>${ba-dua.groupId}</groupId>
+                    <artifactId>ba-dua-agent-rt</artifactId>
+                    <classifier>all</classifier>
+                    <version>${ba-dua.version}</version>
+                  </artifactItem>
+                </artifactItems>
+              </configuration>
+            </execution>
+          </executions>
+        </plugin>
+              
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-compiler-plugin</artifactId>
@@ -381,7 +410,7 @@
               <version>1.0.0</version>
               <configuration>
                 <lifecycleMappingMetadata>
-                  <pluginExecutions>
+                  <pluginExecutions>                    
                     <pluginExecution>
                       <pluginExecutionFilter>
                         <groupId>com.diffplug.spotless</groupId>
@@ -519,6 +548,13 @@
     the dependency is specified in the child. -->
   <dependencyManagement>
     <dependencies>
+      <!-- ba-dua -->
+      <dependency>
+        <groupId>${ba-dua.groupId}</groupId>
+        <artifactId>ba-dua-cli</artifactId>
+        <version>${ba-dua.version}</version>
+      </dependency>
+    
       <dependency>
         <groupId>com.fasterxml.jackson.core</groupId>
         <artifactId>jackson-core</artifactId>
