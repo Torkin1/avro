@@ -82,6 +82,6 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: ba-dua-report
-          path: lang/java/avro/target/badua.xml
+          path: lang/java/**/target/badua.xml
           if-no-files-found: error
           retention-days: 90
