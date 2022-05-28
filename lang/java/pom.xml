@@ -77,17 +77,17 @@
     <module>avro</module>
     <module>compiler</module>
     <module>maven-plugin</module>
-    <module>ipc</module>
+    <!--<module>ipc</module>-->
     <module>ipc-jetty</module>
     <module>ipc-netty</module>
     <module>trevni</module>
     <module>tools</module>
-    <module>mapred</module>
+    <!--<module>mapred</module>-->
     <module>protobuf</module>
     <module>thrift</module>
     <module>archetypes</module>
-    <module>grpc</module>
-    <module>integration-test</module>
+    <!--<module>grpc</module>-->
+    <!--<module>integration-test</module>-->
     <module>perf</module>
     <module>tests</module>
   </modules>

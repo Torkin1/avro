@@ -74,6 +74,7 @@
           </archive>
         </configuration>
         <executions>
+          <!--
           <execution>
             <id>prepare-test-jar</id>
             <phase>generate-test-resources</phase>
@@ -87,6 +88,7 @@
               <outputDirectory>${project.build.testOutputDirectory}</outputDirectory>
             </configuration>
           </execution>
+        -->
         </executions>
       </plugin>
       <!-- Avro generates a parser class with javacc. By default, this looks in src/main/javacc
@@ -121,6 +123,7 @@
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>exec-maven-plugin</artifactId>
+        <!--
         <executions>
           <execution>
             <phase>generate-test-sources</phase>
@@ -142,16 +145,19 @@
             </configuration>
           </execution>
         </executions>
+      -->
       </plugin>
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>build-helper-maven-plugin</artifactId>
         <executions>
+          <!--
           <execution>
-            <!--
+            
               Special-purpose maven plugins that generate code usually add the generated sources into the project.
               But because the general-purpose exec plugin above generated code, we need to manually add the generated sources.
             -->
+            <!--
             <id>add-test-source</id>
             <phase>generate-test-sources</phase>
             <goals>
@@ -163,7 +169,8 @@
               </sources>
             </configuration>
           </execution>
-          <execution>
+        -->
+        <execution>
             <!--
               Special-purpose maven plugins that generate code usually add the generated sources into the project.
               But because the general-purpose exec plugin above generated code, we need to manually add the generated sources.
