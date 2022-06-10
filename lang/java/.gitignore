@@ -20,3 +20,4 @@
 dependency-reduced-pom.xml
 mapred/userlogs/
 tools/userlogs/
+bin/
