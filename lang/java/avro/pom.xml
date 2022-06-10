@@ -132,9 +132,13 @@
             <configuration>
               <targetClasses>
                 <param>org.apache.avro.ArraysUtil</param>
+                <param>org.apache.avro.Schema*</param>
+                <param>org.apache.avro.JsonProperties*</param>
               </targetClasses>
               <targetTests>
                 <param>org.apache.avro.ArraysUtilTest</param>
+                <param>org.apache.avro.SchemaTest</param>
+                <param>org.apache.avro.ProtocolTest</param>
               </targetTests>
               <verbose>on</verbose>
               <failWhenNoMutation>false</failWhenNoMutation>

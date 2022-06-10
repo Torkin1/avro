@@ -32,27 +32,15 @@ import static org.junit.Assert.*;
 public class ProtocolTest {
 
   /** protocol sample JSON description */
-  private static final String PROTOCOL_HELLO_WORLD = "{\n" +
-    "  \"namespace\": \"com.acme\",\n" +
-    "  \"protocol\": \"HelloWorld\",\n" +
-    "  \"doc\": \"Protocol Greetings\",\n" +
-    "\n" +
-    "  \"types\": [\n" +
-    "    {\"name\": \"Greeting\", \"type\": \"record\", \"fields\": [\n" +
-    "      {\"name\": \"message\", \"type\": \"string\"}]},\n" +
-    "    {\"name\": \"Curse\", \"type\": \"error\", \"fields\": [\n" +
-    "      {\"name\": \"message\", \"type\": \"string\"}]}\n" +
-    "  ],\n" +
-    "\n" +
-    "  \"messages\": {\n" +
-    "    \"hello\": {\n" +
-    "      \"doc\": \"Say hello.\",\n" +
-    "      \"request\": [{\"name\": \"greeting\", \"type\": \"Greeting\" }],\n" +
-    "      \"response\": \"Greeting\",\n" +
-    "      \"errors\": [\"Curse\"]\n" +
-    "    }\n" +
-    "  }\n" +
-    "}";
+  private static final String PROTOCOL_HELLO_WORLD = "{\n" + "  \"namespace\": \"com.acme\",\n"
+      + "  \"protocol\": \"HelloWorld\",\n" + "  \"doc\": \"Protocol Greetings\",\n" + "\n" + "  \"types\": [\n"
+      + "    {\"name\": \"Greeting\", \"type\": \"record\", \"fields\": [\n"
+      + "      {\"name\": \"message\", \"type\": \"string\"}]},\n"
+      + "    {\"name\": \"Curse\", \"type\": \"error\", \"fields\": [\n"
+      + "      {\"name\": \"message\", \"type\": \"string\"}]}\n" + "  ],\n" + "\n" + "  \"messages\": {\n"
+      + "    \"hello\": {\n" + "      \"doc\": \"Say hello.\",\n"
+      + "      \"request\": [{\"name\": \"greeting\", \"type\": \"Greeting\" }],\n"
+      + "      \"response\": \"Greeting\",\n" + "      \"errors\": [\"Curse\"]\n" + "    }\n" + "  }\n" + "}";
 
   private String value;
   private Class<? extends Exception> expectedException;
@@ -69,15 +57,10 @@ public class ProtocolTest {
   }
 
   @Parameterized.Parameters(name = "{0}, {1}")
-  public static Collection<Object[]> getParams(){
-    return Arrays.asList(new Object[][]{
-      { Exception.class,  null                  },
-      { Exception.class,  ""                    },
-      { null,             PROTOCOL_HELLO_WORLD  }
-    });
+  public static Collection<Object[]> getParams() {
+    return Arrays
+        .asList(new Object[][] { { Exception.class, null }, { Exception.class, "" }, { null, PROTOCOL_HELLO_WORLD } });
   }
-
-
 
   @Test
   public void parseTest() {

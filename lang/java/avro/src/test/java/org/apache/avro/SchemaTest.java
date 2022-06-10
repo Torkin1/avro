@@ -21,7 +21,7 @@ import org.junit.After;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
-import org.mockito.*;
+import org.mockito.MockitoAnnotations;
 
 import java.util.Arrays;
 import java.util.Collection;
@@ -44,8 +44,8 @@ public class SchemaTest {
   // mocks
   private AutoCloseable mocks;
 
-
-  public SchemaTest(Class<? extends Exception> expectedExceptionType, String name, String value, boolean isPropertyAlreadyAdded) {
+  public SchemaTest(Class<? extends Exception> expectedExceptionType, String name, String value,
+      boolean isPropertyAlreadyAdded) {
     this.name = name;
     this.value = value;
     this.isPropertyAlreadyAdded = isPropertyAlreadyAdded;
@@ -53,26 +53,23 @@ public class SchemaTest {
     configure();
   }
 
-  private void configure(){
+  private void configure() {
     mocks = MockitoAnnotations.openMocks(this);
 
     // creates a schema of a null type
     schema = Schema.create(Schema.Type.NULL);
 
-    if (isPropertyAlreadyAdded){
+    if (isPropertyAlreadyAdded) {
       schema.addProp(name, value + "_alreadyPresent");
     }
   }
 
   @Parameterized.Parameters(name = "{0}, {1}, {2}, {3}")
-  public static Collection<Object[]> getParams(){
-    return Arrays.asList(new Object[][]{
-      // first iteration - boundary analysis
-      { Exception.class,  null, null,           false,  },
-      { null,             "",   "",             false,  },
-      { null,             "a",  "test",         false,  },
-      { Exception.class,  "a",  "test",  true,   }
-    });
+  public static Collection<Object[]> getParams() {
+    return Arrays.asList(new Object[][] {
+        // first iteration - boundary analysis
+        { Exception.class, null, null, false, }, { null, "", "", false, }, { null, "a", "test", false, },
+        { Exception.class, "a", "test", true, } });
   }
 
   @Test
@@ -83,11 +80,12 @@ public class SchemaTest {
       // do the test
       schema.addProp(name, value);
 
-      // assert that the value inserted is the expected one, assuming that the getProp() method is correct
+      // assert that the value inserted is the expected one, assuming that the
+      // getProp() method is correct
       actualValue = schema.getProp(name);
       assertEquals(value, actualValue);
       assertNull(expectedExceptionType);
-    } catch (Exception e){
+    } catch (Exception e) {
       // assert that an exception is expected
       Logger.getLogger(this.getClass().getName()).log(Level.INFO, e.getMessage(), e);
       assertTrue(expectedExceptionType.isAssignableFrom(e.getClass()));
@@ -95,7 +93,7 @@ public class SchemaTest {
   }
 
   @After
-  public  void clean() throws Exception {
+  public void clean() throws Exception {
     // close mocks
     mocks.close();
 
