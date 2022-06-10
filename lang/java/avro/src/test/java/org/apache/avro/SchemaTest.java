@@ -69,7 +69,8 @@ public class SchemaTest {
     return Arrays.asList(new Object[][] {
         // first iteration - boundary analysis
         { Exception.class, null, null, false, }, { null, "", "", false, }, { null, "a", "test", false, },
-        { Exception.class, "a", "test", true, } });
+        { Exception.class, "a", "test", true, }, { Exception.class, "type", "test", false } // +1 def-use, +1 LOC
+    });
   }
 
   @Test

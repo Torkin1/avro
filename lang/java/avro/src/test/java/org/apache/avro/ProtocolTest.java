@@ -41,7 +41,9 @@ public class ProtocolTest {
       + "    \"hello\": {\n" + "      \"doc\": \"Say hello.\",\n"
       + "      \"request\": [{\"name\": \"greeting\", \"type\": \"Greeting\" }],\n"
       + "      \"response\": \"Greeting\",\n" + "      \"errors\": [\"Curse\"]\n" + "    }\n" + "  }\n" + "}";
-
+  // +1 def-use, +1 LOC
+  private static final String PROTOCOL_PROP_UNRESERVED = "{\n" + "  \"protocol\": \"unreservedProp\",\n"
+      + "  \"myProp\": \"myValue\"\n" + "}";
   private String value;
   private Class<? extends Exception> expectedException;
 
@@ -53,13 +55,13 @@ public class ProtocolTest {
 
   private void configure() {
 
-    // no configuration required ...
+    // no configuration required yet ...
   }
 
   @Parameterized.Parameters(name = "{0}, {1}")
   public static Collection<Object[]> getParams() {
-    return Arrays
-        .asList(new Object[][] { { Exception.class, null }, { Exception.class, "" }, { null, PROTOCOL_HELLO_WORLD } });
+    return Arrays.asList(new Object[][] { { Exception.class, null }, { Exception.class, "" },
+        { null, PROTOCOL_HELLO_WORLD }, { null, PROTOCOL_PROP_UNRESERVED } });
   }
 
   @Test
