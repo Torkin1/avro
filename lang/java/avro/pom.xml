@@ -134,6 +134,7 @@
                 <param>org.apache.avro.ArraysUtil</param>
                 <param>org.apache.avro.Schema*</param>
                 <param>org.apache.avro.JsonProperties*</param>
+                <param>org.apache.avro.Protocol*</param>
               </targetClasses>
               <targetTests>
                 <param>org.apache.avro.ArraysUtilTest</param>
