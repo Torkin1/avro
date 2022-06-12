@@ -17,11 +17,9 @@
  */
 package org.apache.avro;
 
-import org.junit.After;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
-import org.mockito.MockitoAnnotations;
 
 import java.util.Arrays;
 import java.util.Collection;
@@ -41,9 +39,6 @@ public class SchemaTest {
   /** SUT */
   private Schema schema;
 
-  // mocks
-  private AutoCloseable mocks;
-
   public SchemaTest(Class<? extends Exception> expectedExceptionType, String name, String value,
       boolean isPropertyAlreadyAdded) {
     this.name = name;
@@ -54,7 +49,6 @@ public class SchemaTest {
   }
 
   private void configure() {
-    mocks = MockitoAnnotations.openMocks(this);
 
     // creates a schema of a null type
     schema = Schema.create(Schema.Type.NULL);
@@ -80,7 +74,6 @@ public class SchemaTest {
     try {
       // do the test
       schema.addProp(name, value);
-
       // assert that the value inserted is the expected one, assuming that the
       // getProp() method is correct
       actualValue = schema.getProp(name);
@@ -91,12 +84,5 @@ public class SchemaTest {
       Logger.getLogger(this.getClass().getName()).log(Level.INFO, e.getMessage(), e);
       assertTrue(expectedExceptionType.isAssignableFrom(e.getClass()));
     }
-  }
-
-  @After
-  public void clean() throws Exception {
-    // close mocks
-    mocks.close();
-
   }
 }
